@@ -5,14 +5,7 @@ class CostsController < ApplicationController
   # GET /costs.json
   def index
     @costs = Cost.all
-      @money_costs3 = Cost.where(['cost_date like ?','2015-03%']).order('cost_date')
-      @money_total3 = Cost.where(['cost_date like ?','2015-03%']).sum(:money)
-      @money_costs4 = Cost.where(['cost_date like ?','2015-04%']).order('cost_date')
-      @money_total4 = Cost.where(['cost_date like ?','2015-04%']).sum(:money)
-      @money_costs5 = Cost.where(['cost_date like ?','2015-05%']).order('cost_date')
-      @money_total5 = Cost.where(['cost_date like ?','2015-05%']).sum(:money)
-      @money_costs6 = Cost.where(['cost_date like ?','2015-06%']).order('cost_date')
-      @money_total6 = Cost.where(['cost_date like ?','2015-06%']).sum(:money)
+      
   end
 
   # GET /costs/1
