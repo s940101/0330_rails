@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @money_costs3.each do |cost| %>
+    <% @costs.each do |cost| %>
       <tr>
         <td><%= cost.cost_date %></td>
         <td><%= cost.title %></td>
@@ -27,7 +27,7 @@
   <tr>
     <td></td>
     <td>總計</td>
-    <td><%= @money_total3 %></td>
+    <td></td>
     <td></td>
   </tr>
 </table>
