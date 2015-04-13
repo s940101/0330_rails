@@ -5,7 +5,14 @@ class CostsController < ApplicationController
   # GET /costs.json
   def index
     @costs = Cost.all
-    @total = Cost.where(['cost_date between ? and ?', '2015-03-01', '2015-03-31' ])
+    
+    @num = ['01','02','03','04','05','06','07','08','09','10','11','12']
+    @month = []
+    @total = []
+    (0..11).each do |i|
+      @month[i] = Cost.where(['cost_date between ? and ?','2015-'+@num[i]+'-01', '2015-'+@num[i]+'-31']).order('cost_date')
+      @total[i] = Cost.where(['cost_date between ? and ?','2015-'+@num[i]+'-01', '2015-'+@num[i]+'-31']).sum(:money)
+    end
   end
 
   # GET /costs/1
