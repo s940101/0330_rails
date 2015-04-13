@@ -5,7 +5,6 @@ class CostsController < ApplicationController
   # GET /costs.json
   def index
     @costs = Cost.all
-      
   end
 
   # GET /costs/1
@@ -71,9 +70,5 @@ class CostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def cost_params
       params.require(:cost).permit(:cost_date, :title, :money)
-    end
-    
-    def cost_month
-      
     end
 end
