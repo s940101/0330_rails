@@ -5,6 +5,7 @@ class CostsController < ApplicationController
   # GET /costs.json
   def index
     @costs = Cost.all
+    @total = Cost.where(['cost_date between ? and ?', '2015-03-01', '2015-03-31' ])
   end
 
   # GET /costs/1
