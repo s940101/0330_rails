@@ -1,38 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>帳目表</h1>
-<% (0..11).each do |i| %>
-  <h3><%= i+1 %>月</h3>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>日期</th>
-        <th>項目</th>
-        <th>金額</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
+<div role="tabpanel">  
+  <ul class="nav nav-tabs" role="tablist">
+    <% (0..11).each do |i| %>
+    <li role="presentation"><a href="#<%= @num[i] %>" role="tab" data-toggle="tab"><%= @num[i] %></a></li>
+    <% end %>
+  </ul>
+  
+  <div class="tab-content">
+    <% (0..11).each do |i| %>
+      <div role="tabpanel" class="tab-pane" id="<%= @num[i] %>">
+        <h1>帳目表</h1>
+        <h3><%= i+1 %>月</h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>日期</th>
+              <th>項目</th>
+              <th>金額</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
 
-    <tbody>
-      <% @month[i].each do |cost| %>
-        <tr>
-          <td><%= cost.cost_date %></td>
-          <td><%= cost.title %></td>
-          <td><%= cost.money %></td>
-          <td><%= link_to 'Show', cost %></td>
-          <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
-          <td><%= link_to 'Destroy', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    <tr>
-      <td></td>
-      <td>總計</td>
-      <td><%= @total[i] %></td>
-      <td></td>
-    </tr>
-  </table>
-<% end %>
+          <tbody>
+            <% @month[i].each do |cost| %>
+              <tr>
+                <td><%= cost.cost_date %></td>
+                <td><%= cost.title %></td>
+                <td><%= cost.money %></td>
+                <td><%= link_to 'Show', cost %></td>
+                <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+                <td><%= link_to 'Destroy', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+          <tr>
+            <td></td>
+            <td>總計</td>
+            <td><%= @total[i] %></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <br>
 

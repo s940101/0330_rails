@@ -10,8 +10,8 @@ class CostsController < ApplicationController
     @month = []
     @total = []
     (0..11).each do |i|
-      @month[i] = Cost.where(["date_part('month', cost_date) = ?",@num[i]]).order('cost_date')
-      @total[i] = Cost.where(["date_part('month', cost_date) = ?",@num[i]]).sum(:money)
+      @month[i] = Cost.where(["date_part('year', cost_date) = ? and date_part('month', cost_date) = ?", 2015, @num[i]]).order('cost_date')
+      @total[i] = Cost.where(["date_part('year', cost_date) = ? and date_part('month', cost_date) = ?", 2015, @num[i]]).sum(:money)
     end
     Cost.where(["date_part('month',buyday) = ?", 3])
     
